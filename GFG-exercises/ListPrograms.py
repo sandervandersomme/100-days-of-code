@@ -1,4 +1,5 @@
 from functools import reduce
+import itertools
 
 
 def swap_first_last_element(items):
@@ -86,6 +87,25 @@ def remove_empty_tuples(tuples):
     return list(filter(None, tuples))
 
 
+def duplicates(items):
+    items = list(set([x for x in items if items.count(x) > 1]))
+    return items
+
+
+def accumulate_list(items):
+    return list(itertools.accumulate(items))
+
+
+def sum_digits_of_number(items):
+    return [sum(list(map(int, list(str(item))))) for item in items]
+
+
+def sort_list_by_list(items1, items2):
+    combined = zip(items1, items2)
+    sort_tuples = sorted(combined, key=lambda x: x[1])
+    return [x[0] for x in sort_tuples]
+
+
 if __name__ == '__main__':
     print(swap_first_last_element([6, 7, 8, 4, 3, 2, 5, 6, 7, 9, 0]))
     print(swap_elements([6, 7, 8, 4, 3, 2, 5, 6, 7, 9, 0], 4, 6))
@@ -102,5 +122,9 @@ if __name__ == '__main__':
     print(odd_in_range(2, 8))
     print(count_element([2, 4, 5, 8, 8, 7, 9, 8], 8))
     print(remove_empty_tuples([(), (), (2, 4), (2, 5), ()]))
+    print(duplicates([2, 4, 5, 8, 8, 7, 9, 8, 4, 5, 1, 7, 6, 3]))
+    print(accumulate_list([2, 4, 5, 8, 8, 7, 9, 8, 4, 5, 1, 7, 6, 3]))
+    print(sum_digits_of_number([12, 54, 35, 28, 78, 77, 99, 68, 40, 35, 21, 27, 6, 3]))
+    print(sort_list_by_list([2, 4, 5, 8, 8, 7, 9, 8, 4, 5, 1, 7, 6, 3], [0, 0, 1, 2, 3, 2, 2, 0, 1, 1, 3, 0, 2, 1]))
 
 

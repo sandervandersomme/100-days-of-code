@@ -9,7 +9,7 @@ class Boat:
     def __repr__(self):
         return self.name
 
-    def sink_part(self):
+    def increase_sunken_parts(self):
         self.parts_sunk += 1
 
     def is_destroyed(self):
